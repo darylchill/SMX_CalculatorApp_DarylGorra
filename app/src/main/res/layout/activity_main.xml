@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:id="@+id/main"
+    android:padding="16dp">
+
+    <!-- Display -->
+    <TextView
+        android:id="@+id/txtNumberOp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EEE"
+        android:gravity="end"
+        android:padding="16dp"
+        android:text="@string/_0"
+        android:textSize="32sp"
+        android:textColor="#000"
+        android:maxLines="1"
+        android:ellipsize="end" />
+
+    <!-- Buttons Grid -->
+    <!-- Buttons Grid -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="4"
+        android:rowCount="5"
+        android:layout_marginTop="16dp"
+        android:padding="4dp">
+
+        <!-- Digits & Operators -->
+        <Button android:text="@string/_7" style="@style/CalcButton" android:id="@+id/btn7" android:layout_columnWeight="1"/>
+        <Button android:text="@string/_8" style="@style/CalcButton" android:id="@+id/btn8" android:layout_columnWeight="1"/>
+        <Button android:text="@string/_9" style="@style/CalcButton" android:id="@+id/btn9" android:layout_columnWeight="1"/>
+        <Button android:text="@string/div" style="@style/OpButton" android:id="@+id/btnDivide" android:layout_columnWeight="1"/>
+
+        <Button android:text="@string/_4" style="@style/CalcButton" android:id="@+id/btn4" android:layout_columnWeight="1"/>
+        <Button android:text="@string/_5" style="@style/CalcButton" android:id="@+id/btn5" android:layout_columnWeight="1"/>
+        <Button android:text="@string/_6" style="@style/CalcButton" android:id="@+id/btn6" android:layout_columnWeight="1"/>
+        <Button android:text="@string/multip" style="@style/OpButton" android:id="@+id/btnMultiply" android:layout_columnWeight="1"/>
+
+        <Button android:text="@string/_1" style="@style/CalcButton" android:id="@+id/btn1" android:layout_columnWeight="1"/>
+        <Button android:text="@string/_2" style="@style/CalcButton" android:id="@+id/btn2" android:layout_columnWeight="1"/>
+        <Button android:text="@string/_3" style="@style/CalcButton" android:id="@+id/btn3" android:layout_columnWeight="1"/>
+        <Button android:text="@string/min" style="@style/OpButton" android:id="@+id/btnSubtract" android:layout_columnWeight="1"/>
+
+        <Button android:text="@string/c" style="@style/OpButton" android:id="@+id/btnClear" android:layout_columnWeight="1"/>
+        <Button android:text="@string/zero" style="@style/CalcButton" android:id="@+id/btn0" android:layout_columnWeight="1"/>
+        <Button android:text="@string/equal" style="@style/OpButton" android:id="@+id/btnEquals" android:layout_columnWeight="1"/>
+        <Button android:text="@string/add" style="@style/OpButton" android:id="@+id/btnAdd" android:layout_columnWeight="1"/>
+
+    </GridLayout>
+
+</LinearLayout>
