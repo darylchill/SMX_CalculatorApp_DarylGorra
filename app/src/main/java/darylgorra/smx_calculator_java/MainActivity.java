@@ -91,58 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // Set click listeners for operators buttons
-    /*private void setOperatorsClickListeners() {
-        Button[] operators = {btnAdd, btnSubtract, btnMultiply, btnDivide};
-
-        View.OnClickListener operatorClickListener = v -> {
-            Button btn = (Button) v;
-            if (input.length() > 0) {
-                if (!operator.isEmpty()) {
-                    secondNumber = Double.parseDouble(input.toString());
-                    firstNumber = calculateResult(firstNumber, secondNumber, operator);
-                    txtNumberOp.setText(String.valueOf(firstNumber));
-                } else {
-                    firstNumber = Double.parseDouble(input.toString());
-                }
-                operator = btn.getText().toString();
-                input.setLength(0);
-                isNewInput = false;
-            }
-        };
-
-        //Loop the listener to all operators
-        for (Button operatorButton : operators) {
-            operatorButton.setOnClickListener(operatorClickListener);
-        }
-    }*/
-
-    // Set click listeners for Special buttons
-   /* private void setSpecialClickListeners() {
-        //RESET
-        btnClear.setOnClickListener(v -> {
-            input.setLength(0);
-            firstNumber = 0;
-            secondNumber = 0;
-            operator = "";
-            isNewInput = true;
-            txtNumberOp.setText("0");
-        });
-
-
-       btnEquals.setOnClickListener(v -> {
-           //Check if StringBuilder has value and check the operator also for any operators click
-            if (input.length() > 0 && !operator.isEmpty()) {
-                secondNumber = Double.parseDouble(input.toString());
-                firstNumber = calculateResult(firstNumber, secondNumber, operator);
-                txtNumberOp.setText(String.valueOf(firstNumber));
-                operator = ""; // Reset operator
-                input.setLength(0);
-                isNewInput = true;
-            }
-        });
-    }*/
-
+    // Set click listeners for operator buttons
     private void setOperatorClickListeners() {
         Button[] operators = {
                 findViewById(R.id.btnAdd), findViewById(R.id.btnSubtract),
@@ -151,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
         View.OnClickListener operatorClickListener = v -> {
             Button btn = (Button) v;
+            //Checking if the last character is not an operator
             if (expression.length() > 0 && !isOperator(expression.charAt(expression.length() - 1))) {
                 expression.append(btn.getText().toString()); // Append operator
                 txtNumberOp.setText(expression.toString());
@@ -163,28 +113,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-/*    private void setSpecialClickListeners() {
-        findViewById(R.id.btnClear).setOnClickListener(v -> {
-            expression.setLength(0);
-            txtNumberOp.setText("0");
-            isNewInput = true;
-        });
 
-        findViewById(R.id.btnEquals).setOnClickListener(v -> {
-            if (expression.length() > 0) {
-                try {
-                    double result = evaluateExpression(expression.toString());
-                    txtNumberOp.setText(String.valueOf(result));
-                    expression.setLength(0);
-                    isNewInput = true;
-                } catch (Exception e) {
-                    txtNumberOp.setText("Error");
-                }
-            }
-        });
-    }*/
-
-
+    // Set click listeners for special buttons (clear, equals)
     private void setSpecialClickListeners() {
         findViewById(R.id.btnClear).setOnClickListener(v -> {
             expression.setLength(0);
@@ -192,32 +122,22 @@ public class MainActivity extends AppCompatActivity {
             isNewInput = true;
         });
 
+        // Set click listener for equals button
         findViewById(R.id.btnEquals).setOnClickListener(v -> {
             if (expression.length() > 0) {
                 try {
+                    // Evaluate the expression and Convert to valid Java syntax
                     double result = evaluateExpression(expression.toString());
                     txtNumberOp.setText(String.valueOf(result));
                     expression.setLength(0); // Clear expression
                     isNewInput = true;
                 } catch (Exception e) {
-                    txtNumberOp.setText("Error");
+                    txtNumberOp.setText(R.string.error);
                 }
             }
         });
     }
 
-
-
-/*    private double calculateResult(double num1, double num2, String op) {
-        // Calculate the result based on the operator from -> op (String)
-        switch (op) {
-            case "+": return num1 + num2;
-            case "-": return num1 - num2;
-            case "×": return num1 * num2;
-            case "÷": return num2 != 0 ? num1 / num2 : 0; // Prevent division by zero
-            default: return 0;
-        }
-    }*/
 
     private boolean isOperator(char c) {
         return c == '+' || c == '-' || c == '×' || c == '÷';
@@ -286,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private int precedence(char op) {
+        //PEMDAS
         if (op == '+' || op == '-') return 1; // Low precedence (evaluated last)
         if (op == '*' || op == '/') return 2; // High precedence (evaluated first)
         return 0; // Default (invalid operator case)
