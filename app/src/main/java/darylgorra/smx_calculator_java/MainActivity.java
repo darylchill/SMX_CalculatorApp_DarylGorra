@@ -20,9 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private Button btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn0;
 
     private StringBuilder expression = new StringBuilder();
-    private double firstNumber = 0;
-    private double secondNumber = 0;
-    private String operator = "";
     private boolean isNewInput = true;
 
     @Override
@@ -93,10 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Set click listeners for operator buttons
     private void setOperatorClickListeners() {
-        Button[] operators = {
-                findViewById(R.id.btnAdd), findViewById(R.id.btnSubtract),
-                findViewById(R.id.btnMultiply), findViewById(R.id.btnDivide)
-        };
+        Button[] operators = { btnAdd, btnSubtract, btnMultiply, btnDivide};
 
         View.OnClickListener operatorClickListener = v -> {
             Button btn = (Button) v;
@@ -116,14 +110,14 @@ public class MainActivity extends AppCompatActivity {
 
     // Set click listeners for special buttons (clear, equals)
     private void setSpecialClickListeners() {
-        findViewById(R.id.btnClear).setOnClickListener(v -> {
+        btnClear.setOnClickListener(v -> {
             expression.setLength(0);
             txtNumberOp.setText("0");
             isNewInput = true;
         });
 
         // Set click listener for equals button
-        findViewById(R.id.btnEquals).setOnClickListener(v -> {
+       btnEquals.setOnClickListener(v -> {
             if (expression.length() > 0) {
                 try {
                     // Evaluate the expression and Convert to valid Java syntax
@@ -150,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private double evaluate(String expression) {
+        //Stack-based approach because it allows us to properly evaluate arithmetic expressions while following operator precedence.
       /*  How It Works (Step-by-Step)
         Let's evaluate the expression: 3 + 5 × 2
         Push numbers into the numbers stack: [3]
@@ -163,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         Apply +: 3 + 10 = 13
         Final result = 13*/
 
-        //Stack-based approach because it allows us to properly evaluate arithmetic expressions while following operator precedence.
+
         Stack<Double> numbers = new Stack<>();
         Stack<Character> operations = new Stack<>();
 
