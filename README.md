@@ -12,7 +12,7 @@ A simple Android calculator that performs basic arithmetic operations with a rea
 ## ⚙️ Functionalities  
 - Perform **addition, subtraction, multiplication, and division**.  
 - Handle **invalid input** (e.g., division by zero).  
-- Support **multi-digit numbers and decimals**.  
+- Support **multi-digit numbers**.  
 - Display results **in real-time**.  
 
 ## 🏗️ App Behavior  
@@ -25,8 +25,4 @@ A simple Android calculator that performs basic arithmetic operations with a rea
 2. Open the project in **Android Studio**.  
 3. Build and run on an **Android device or emulator**.  
 
-## 📜 License  
-This project is open-source and available for modification and distribution.  
 
----
-🚀 **Happy Coding!**
