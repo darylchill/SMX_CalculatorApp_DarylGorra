@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private double evaluate(String expression) {
+        //https://github.com/brettshollenberger/shunting-yard-algorithm/blob/master/README.md
         //Stack-based approach because it allows us to properly evaluate arithmetic expressions while following operator precedence.
       /*  How It Works (Step-by-Step)
         Let's evaluate the expression: 3 + 5 × 2
