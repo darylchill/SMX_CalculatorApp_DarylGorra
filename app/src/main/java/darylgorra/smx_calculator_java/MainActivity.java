@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
        btnEquals.setOnClickListener(v -> {
             if (expression.length() > 0) {
                 try {
-                    // Evaluate the expression and Convert to valid Java syntax
+                    // Evaluate the expression
                     double result = evaluateExpression(expression.toString());
                     txtNumberOp.setText(String.valueOf(result));
                     expression.setLength(0); // Clear expression
